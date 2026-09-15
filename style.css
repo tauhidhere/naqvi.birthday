@@ -1,136 +1,102 @@
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.55);
-    z-index: -1;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: Georgia, serif;
-    background: black;
-    color: white;
-    overflow: hidden;
+    background: #0f0f0f;
+    color: #fff;
+    overflow-x: hidden;
 }
 
+/* PAGES */
 .page {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.8s ease;
-    padding: 20px;
+    display: none;
+    min-height: 100vh;
+    width: 100%;
 }
 
 .page.active {
-    opacity: 1;
-    pointer-events: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* FIRST PAGE ONLY - BACKGROUND */
 #home {
-    background: transparent !important;
+    position: relative;
+    background-image: url("images/iffat.jpg");
+    background-size: cover;
+    background-position: center top;
+    min-height: 100vh;
 }
 
-#letter, #final {
-    background: rgba(0,0,0,0.3) !important;
-    backdrop-filter: blur(2px);
-    overflow-y: auto;
+#home .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.60);
+    z-index: 1;
 }
 
-.hero, .final {
+#home .hero {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    max-width: 500px;
+    padding: 20px;
+}
+
+.heart {
+    font-size: 50px;
+    animation: heartbeat 1.5s infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
 }
 
 .small {
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     font-size: 12px;
     opacity: 0.8;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 h1 {
-    font-size: 48px;
-    margin: 10px 0;
-    line-height: 1.1;
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 25px;
 }
 
-.subtitle {
-    margin: 20px 0;
-    opacity: 0.9;
+h1 span {
+    color: #ff6b9d;
 }
 
-button {
-    background: white;
-    color: black;
+.btn {
+    padding: 12px 28px;
     border: none;
-    padding: 14px 28px;
     border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
+    background: #ff4d8d;
+    color: #fff;
     font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.heart, .big-heart {
-    font-size: 40px;
-    animation: beat 1.5s infinite;
+.btn:hover {
+    background: #ff2e7a;
+    transform: scale(1.05);
 }
 
-@keyframes beat {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-}
-
-.article {
-    background: white;
-    color: #333;
-    padding: 40px 30px;
-    border-radius: 20px;
-    max-width: 600px;
-    width: 100%;
+/* OTHER PAGES - Normal dark background */
+#page2, #page3, #page4 {
+    background: #1a1a1a;
+    padding: 40px 20px;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-}
-
-.article h2 {
-    color: #ff4d6d;
-    margin-bottom: 10px;
-}
-
-.line {
-    width: 50px;
-    height: 3px;
-    background: #ff4d6d;
-    margin: 10px auto 20px;
-}
-
-.article p {
-    margin: 15px 0;
-    line-height: 1.6;
-}
-
-.special {
-    background: #fff0f3;
-    padding: 15px;
-    border-radius: 15px;
-    margin: 20px 0;
-    border: 1px solid #ffb3c1;
-}
-
-.final h2 {
-    font-weight: normal;
-    font-style: italic;
-    margin-top: 5px;
 }
